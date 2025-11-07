@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="294mm" xmlns="http://www.w3.org/2000/svg" height="227mm" version="1.1" viewBox="0 0 1113 861" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <polyline fill="none" points="797,123 671,80" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="694,88 708,89 706,95" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="726" y="101" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_CUSTOMER_REFERENCE_CUSTOMER</text>
+   <polyline fill="none" points="804,578 300,813" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="370,781 381,772 383,778" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="536" y="706" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_PRODUCTS_REFERENCE_PRODUCTC</text>
+   <polyline fill="none" points="640,805 738,583" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="719,626 717,639 711,637" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="684" y="707" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_PRODUCTP_REFERENCE_PRODUCTS</text>
+   <polyline fill="none" points="877,772 755,592" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="778,626 788,635 783,638" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="813" y="680" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_PRODUCTR_REFERENCE_PRODUCTS</text>
+   <polyline fill="none" points="927,794 965,564" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="959,606 959,620 953,619" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="948" y="671" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_PRODUCTR_REFERENCE_TRANSACT</text>
+   <polyline fill="none" points="862,409 604,119" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="679,203 690,211 685,215" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="750" y="286" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_ORDERS_REFERENCE_CUSTOMER</text>
+   <polyline fill="none" points="392,631 898,407" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="790,454 779,463 776,457" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="618" y="534" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_ORDERDET_REFERENCE_ORDERS</text>
+   <polyline fill="none" points="431,656 828,576" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="663,609 650,615 649,609" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="554" y="634" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_ORDERDET_REFERENCE_PRODUCTS</text>
+   <polyline fill="none" points="833,420 903,234" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="893,260 891,274 886,272" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="873" y="315" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_ORDERS_REFERENCE_ORDERSTA</text>
+   <polyline fill="none" points="101,529 103,270" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="102,355 105,368 99,368" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="102" y="390" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_FACTSALE_REFERENCE_DIMDATE</text>
+   <polyline fill="none" points="178,478 571,122" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="514,174 506,185 502,180" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="356" y="320" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_FACTSALE_REFERENCE_CUSTOMER</text>
+   <polyline fill="none" points="173,496 796,409" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="773,412 760,417 759,411" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="486" y="455" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_FACTSALE_REFERENCE_ORDERS</text>
+   <polyline fill="none" points="172,515 302,659" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="265,618 254,610 258,606" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="232" y="584" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_FACTSALE_REFERENCE_ORDERDET</text>
+   <polyline fill="none" points="185,496 737,560" stroke="#0000ff" stroke-width="1"/>
+   <polygon fill="#0000ff" points="663,551 649,553 650,547" stroke="#0000ff" stroke-width="1" stroke-linejoin="miter"/>
+   <text x="430" y="527" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FK_FACTSALE_REFERENCE_PRODUCTS</text>
+   <polyline fill="none" points="253,118 387,118 387,79 253,79 253,118" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="249,85 253,99 257,85" stroke="#0000ff" stroke-width="1"/>
+   <text x="387" y="81" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="261,110 115,269" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="197,174 191,186 203,179" stroke="#0000ff" stroke-width="1"/>
+   <text x="213" y="165" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="263,108 365,27" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="321,67 329,56 316,61" stroke="#0000ff" stroke-width="1"/>
+   <text x="302" y="80" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="345,187 110,488" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="169,406 164,419 175,411" stroke="#0000ff" stroke-width="1"/>
+   <text x="251" y="310" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="345,187 115,269" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="209,231 198,239 212,238" stroke="#0000ff" stroke-width="1"/>
+   <text x="259" y="220" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="345,187 866,405" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="759,365 773,366 762,358" stroke="#0000ff" stroke-width="1"/>
+   <text x="569" y="284" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="345,187 606,117" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="502,149 514,142 500,141" stroke="#0000ff" stroke-width="1"/>
+   <text x="445" y="163" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="345,187 357,632" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="351,563 356,576 359,563" stroke="#0000ff" stroke-width="1"/>
+   <text x="350" y="389" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <polyline fill="none" points="345,187 754,572" stroke="#0000ff" stroke-width="1" stroke-dasharray="16,8"/>
+   <polyline fill="none" points="688,516 701,522 694,510" stroke="#0000ff" stroke-width="1"/>
+   <text x="527" y="362" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">&lt;&lt;DBCreateAfter&gt;&gt;</text>
+   <rect x="514" y="34" fill="#ffffff" width="180" height="169" stroke="#0000ff" stroke-width="1"/>
+   <text x="603" y="47" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">Customers</text>
+   <line x1="514" x2="694" y1="54" y2="54" stroke="#0000ff" stroke-width="1"/>
+   <text x="518" y="64" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">CustomerID</text>
+   <text x="518" y="77" fill="#000000" font-size="10" font-family="Arial">FullName</text>
+   <text x="518" y="90" fill="#000000" font-size="10" font-family="Arial">FirstName</text>
+   <text x="518" y="103" fill="#000000" font-size="10" font-family="Arial">LastName</text>
+   <text x="518" y="116" fill="#000000" font-size="10" font-family="Arial">AddressLine</text>
+   <text x="518" y="129" fill="#000000" font-size="10" font-family="Arial">City</text>
+   <text x="518" y="142" fill="#000000" font-size="10" font-family="Arial">County</text>
+   <text x="518" y="155" fill="#000000" font-size="10" font-family="Arial">Postcode</text>
+   <text x="518" y="168" fill="#000000" font-size="10" font-family="Arial">PhoneNumber</text>
+   <text x="518" y="181" fill="#000000" font-size="10" font-family="Arial">EmailAddress</text>
+   <text x="518" y="194" fill="#000000" font-size="10" font-family="Arial">DateOfBirth</text>
+   <text x="594" y="64" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="594" y="77" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="594" y="90" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="594" y="103" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="594" y="116" fill="#000000" font-size="10" font-family="Arial">nvarchar(500)</text>
+   <text x="594" y="129" fill="#000000" font-size="10" font-family="Arial">nvarchar(100)</text>
+   <text x="594" y="142" fill="#000000" font-size="10" font-family="Arial">nvarchar(100)</text>
+   <text x="594" y="155" fill="#000000" font-size="10" font-family="Arial">nvarchar(20)</text>
+   <text x="594" y="168" fill="#000000" font-size="10" font-family="Arial">nvarchar(50)</text>
+   <text x="594" y="181" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="594" y="194" fill="#000000" font-size="10" font-family="Arial">date</text>
+   <text x="666" y="64" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <rect x="265" y="576" fill="#ffffff" width="181" height="117" stroke="#0000ff" stroke-width="1"/>
+   <text x="354" y="589" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">OrderDetails</text>
+   <line x1="265" x2="446" y1="596" y2="596" stroke="#0000ff" stroke-width="1"/>
+   <text x="269" y="606" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">OrderDetailID</text>
+   <text x="269" y="619" fill="#000000" font-size="10" font-family="Arial">OrderID</text>
+   <text x="269" y="632" fill="#000000" font-size="10" font-family="Arial">ProductID</text>
+   <text x="269" y="645" fill="#000000" font-size="10" font-family="Arial">ProductName</text>
+   <text x="269" y="658" fill="#000000" font-size="10" font-family="Arial">Quantity</text>
+   <text x="269" y="671" fill="#000000" font-size="10" font-family="Arial">UnitPrice</text>
+   <text x="269" y="684" fill="#000000" font-size="10" font-family="Arial">LineTotal</text>
+   <text x="341" y="606" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="341" y="619" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="341" y="632" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="341" y="645" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="341" y="658" fill="#000000" font-size="10" font-family="Arial">integer</text>
+   <text x="341" y="671" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="341" y="684" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="414" y="606" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <text x="414" y="619" fill="#000000" font-size="10" font-family="Arial">&lt;fk1&gt;</text>
+   <text x="414" y="632" fill="#000000" font-size="10" font-family="Arial">&lt;fk2&gt;</text>
+   <rect x="773" y="364" fill="#ffffff" width="177" height="90" stroke="#0000ff" stroke-width="1"/>
+   <text x="861" y="377" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">Orders</text>
+   <line x1="773" x2="950" y1="384" y2="384" stroke="#0000ff" stroke-width="1"/>
+   <text x="777" y="394" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">OrderID</text>
+   <text x="777" y="407" fill="#000000" font-size="10" font-family="Arial">CustomerID</text>
+   <text x="777" y="420" fill="#000000" font-size="10" font-family="Arial">OrderDate</text>
+   <text x="777" y="433" fill="#000000" font-size="10" font-family="Arial">TotalAmount</text>
+   <text x="777" y="446" fill="#000000" font-size="10" font-family="Arial">StatusID</text>
+   <text x="846" y="394" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="846" y="407" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="846" y="420" fill="#000000" font-size="10" font-family="Arial">date</text>
+   <text x="846" y="433" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="846" y="446" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="919" y="394" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <text x="919" y="407" fill="#000000" font-size="10" font-family="Arial">&lt;fk1&gt;</text>
+   <text x="919" y="446" fill="#000000" font-size="10" font-family="Arial">&lt;fk2&gt;</text>
+   <rect x="663" y="522" fill="#ffffff" width="178" height="104" stroke="#0000ff" stroke-width="1"/>
+   <text x="751" y="535" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">Products</text>
+   <line x1="663" x2="841" y1="542" y2="542" stroke="#0000ff" stroke-width="1"/>
+   <text x="667" y="552" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">ProductID</text>
+   <text x="667" y="565" fill="#000000" font-size="10" font-family="Arial">ProductName</text>
+   <text x="667" y="578" fill="#000000" font-size="10" font-family="Arial">ProdCatID</text>
+   <text x="667" y="591" fill="#000000" font-size="10" font-family="Arial">Description</text>
+   <text x="667" y="604" fill="#000000" font-size="10" font-family="Arial">Price</text>
+   <text x="667" y="617" fill="#000000" font-size="10" font-family="Arial">StockQuantity</text>
+   <text x="740" y="552" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="740" y="565" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="740" y="578" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="740" y="591" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="740" y="604" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="740" y="617" fill="#000000" font-size="10" font-family="Arial">integer</text>
+   <text x="813" y="552" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <text x="813" y="578" fill="#000000" font-size="10" font-family="Arial">&lt;fk&gt;</text>
+   <rect x="802" y="207" fill="#c0ffc0" width="145" height="53" stroke="#0000ff" stroke-width="1"/>
+   <text x="874" y="220" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">OrderStatus</text>
+   <line x1="802" x2="947" y1="227" y2="227" stroke="#0000ff" stroke-width="1"/>
+   <text x="806" y="237" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">StatusID</text>
+   <text x="806" y="250" fill="#000000" font-size="10" font-family="Arial">Status</text>
+   <text x="853" y="237" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">int</text>
+   <text x="853" y="250" fill="#000000" font-size="10" font-family="Arial">nvarchar(50)</text>
+   <text x="919" y="237" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <rect x="18" y="419" fill="#c0ffc0" width="180" height="142" stroke="#0000ff" stroke-width="1"/>
+   <text x="107" y="431" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">FactSales</text>
+   <line x1="18" x2="198" y1="438" y2="438" stroke="#0000ff" stroke-width="1"/>
+   <text x="22" y="448" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">SalesID</text>
+   <text x="22" y="461" fill="#000000" font-size="10" font-family="Arial">OrderID</text>
+   <text x="22" y="474" fill="#000000" font-size="10" font-family="Arial">OrderDetailID</text>
+   <text x="22" y="487" fill="#000000" font-size="10" font-family="Arial">CustomerID</text>
+   <text x="22" y="500" fill="#000000" font-size="10" font-family="Arial">ProductID</text>
+   <text x="22" y="513" fill="#000000" font-size="10" font-family="Arial">DateKey</text>
+   <text x="22" y="526" fill="#000000" font-size="10" font-family="Arial">Quantity</text>
+   <text x="22" y="539" fill="#000000" font-size="10" font-family="Arial">SalesAmount</text>
+   <text x="22" y="552" fill="#000000" font-size="10" font-family="Arial">Status</text>
+   <text x="94" y="448" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="94" y="461" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="94" y="474" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="94" y="487" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="94" y="500" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="94" y="513" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="94" y="526" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="94" y="539" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="94" y="552" fill="#000000" font-size="10" font-family="Arial">nvarchar(50)</text>
+   <text x="167" y="448" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <text x="167" y="461" fill="#000000" font-size="10" font-family="Arial">&lt;fk3&gt;</text>
+   <text x="167" y="474" fill="#000000" font-size="10" font-family="Arial">&lt;fk4&gt;</text>
+   <text x="167" y="487" fill="#000000" font-size="10" font-family="Arial">&lt;fk2&gt;</text>
+   <text x="167" y="500" fill="#000000" font-size="10" font-family="Arial">&lt;fk5&gt;</text>
+   <text x="167" y="513" fill="#000000" font-size="10" font-family="Arial">&lt;fk1&gt;</text>
+   <rect x="28" y="186" fill="#c0ffc0" width="170" height="169" stroke="#0000ff" stroke-width="1"/>
+   <text x="112" y="199" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">DimDate</text>
+   <line x1="28" x2="198" y1="206" y2="206" stroke="#0000ff" stroke-width="1"/>
+   <text x="32" y="216" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">DateKey</text>
+   <text x="32" y="229" fill="#000000" font-size="10" font-family="Arial">FullDate</text>
+   <text x="32" y="242" fill="#000000" font-size="10" font-family="Arial">Day</text>
+   <text x="32" y="255" fill="#000000" font-size="10" font-family="Arial">Month</text>
+   <text x="32" y="268" fill="#000000" font-size="10" font-family="Arial">Year</text>
+   <text x="32" y="281" fill="#000000" font-size="10" font-family="Arial">Week</text>
+   <text x="32" y="294" fill="#000000" font-size="10" font-family="Arial">Quarter</text>
+   <text x="32" y="307" fill="#000000" font-size="10" font-family="Arial">IsWeekend</text>
+   <text x="32" y="320" fill="#000000" font-size="10" font-family="Arial">IsHoliday</text>
+   <text x="32" y="333" fill="#000000" font-size="10" font-family="Arial">DayName</text>
+   <text x="32" y="346" fill="#000000" font-size="10" font-family="Arial">MonthName</text>
+   <text x="98" y="216" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">int</text>
+   <text x="98" y="229" fill="#000000" font-size="10" font-family="Arial">date</text>
+   <text x="98" y="242" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="98" y="255" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="98" y="268" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="98" y="281" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="98" y="294" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="98" y="307" fill="#000000" font-size="10" font-family="Arial">bit</text>
+   <text x="98" y="320" fill="#000000" font-size="10" font-family="Arial">bit</text>
+   <text x="98" y="333" fill="#000000" font-size="10" font-family="Arial">nvarchar(100)</text>
+   <text x="98" y="346" fill="#000000" font-size="10" font-family="Arial">nvarchar(100)</text>
+   <text x="170" y="216" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <rect x="186" y="99" rx="5" ry="5" fill="#ffffc0" width="134" height="39" stroke="#0000ff" stroke-width="1"/>
+   <image x="194" y="114" width="9" height="9" xlink:href="ER Diagrams_svg_Files/svg_bitmap1.png"/>
+   <text x="261" y="121" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">usp_PopulateDimDate</text>
+   <rect x="281" y="2" fill="#c0ffc0" width="164" height="54" stroke="#0000ff" stroke-width="1"/>
+   <text x="363" y="15" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">Holidays</text>
+   <line x1="281" x2="445" y1="22" y2="22" stroke="#0000ff" stroke-width="1"/>
+   <text x="285" y="32" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">HolidayDate</text>
+   <text x="285" y="45" fill="#000000" font-size="10" font-family="Arial">HolidayDesc</text>
+   <text x="351" y="32" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">date</text>
+   <text x="351" y="45" fill="#000000" font-size="10" font-family="Arial">nvarchar(50)</text>
+   <text x="417" y="32" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <rect x="232" y="781" fill="#c0ffc0" width="173" height="53" stroke="#0000ff" stroke-width="1"/>
+   <text x="318" y="793" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">ProductCategories</text>
+   <line x1="232" x2="405" y1="800" y2="800" stroke="#0000ff" stroke-width="1"/>
+   <text x="236" y="810" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">ProdCatID</text>
+   <text x="236" y="823" fill="#000000" font-size="10" font-family="Arial">ProdCatDesc</text>
+   <text x="304" y="810" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="304" y="823" fill="#000000" font-size="10" font-family="Arial">nvarchar(255)</text>
+   <text x="376" y="810" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <rect x="757" y="78" fill="#c0ffc0" width="206" height="91" stroke="#0000ff" stroke-width="1"/>
+   <text x="859" y="91" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">CustomerAccountBalance</text>
+   <line x1="757" x2="963" y1="98" y2="98" stroke="#0000ff" stroke-width="1"/>
+   <text x="761" y="108" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">TransactionID</text>
+   <text x="761" y="121" fill="#000000" font-size="10" font-family="Arial">CustomerID</text>
+   <text x="761" y="134" fill="#000000" font-size="10" font-family="Arial">TransactionDate</text>
+   <text x="761" y="147" fill="#000000" font-size="10" font-family="Arial">AccountBalance</text>
+   <text x="761" y="160" fill="#000000" font-size="10" font-family="Arial">TransactionAmount</text>
+   <text x="861" y="108" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="861" y="121" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="861" y="134" fill="#000000" font-size="10" font-family="Arial">datetime</text>
+   <text x="861" y="147" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="861" y="160" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="934" y="108" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <text x="934" y="121" fill="#000000" font-size="10" font-family="Arial">&lt;fk&gt;</text>
+   <rect x="505" y="783" fill="#c0ffc0" width="187" height="65" stroke="#0000ff" stroke-width="1"/>
+   <text x="598" y="796" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">ProductPrices</text>
+   <line x1="505" x2="692" y1="803" y2="803" stroke="#0000ff" stroke-width="1"/>
+   <text x="509" y="813" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">ProductID</text>
+   <text x="509" y="826" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">EffectiveDate</text>
+   <text x="509" y="839" fill="#000000" font-size="10" font-family="Arial">Price</text>
+   <text x="580" y="813" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="580" y="826" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">datetime</text>
+   <text x="580" y="839" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="653" y="813" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk,fk&gt;</text>
+   <text x="653" y="826" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <rect x="762" y="729" fill="#c0ffc0" width="188" height="130" stroke="#0000ff" stroke-width="1"/>
+   <text x="855" y="742" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">ProducTransactions</text>
+   <line x1="762" x2="950" y1="749" y2="749" stroke="#0000ff" stroke-width="1"/>
+   <text x="766" y="759" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">TransactionID</text>
+   <text x="766" y="772" fill="#000000" font-size="10" font-family="Arial">ProductID</text>
+   <text x="766" y="785" fill="#000000" font-size="10" font-family="Arial">TransDate</text>
+   <text x="766" y="798" fill="#000000" font-size="10" font-family="Arial">TransType</text>
+   <text x="766" y="811" fill="#000000" font-size="10" font-family="Arial">TransQuantity</text>
+   <text x="766" y="824" fill="#000000" font-size="10" font-family="Arial">UnitPrice</text>
+   <text x="766" y="837" fill="#000000" font-size="10" font-family="Arial">Reference</text>
+   <text x="766" y="850" fill="#000000" font-size="10" font-family="Arial">Notes</text>
+   <text x="840" y="759" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">bigint</text>
+   <text x="840" y="772" fill="#000000" font-size="10" font-family="Arial">bigint</text>
+   <text x="840" y="785" fill="#000000" font-size="10" font-family="Arial">datetime</text>
+   <text x="840" y="798" fill="#000000" font-size="10" font-family="Arial">int</text>
+   <text x="840" y="811" fill="#000000" font-size="10" font-family="Arial">integer</text>
+   <text x="840" y="824" fill="#000000" font-size="10" font-family="Arial">decimal(18,2)</text>
+   <text x="840" y="837" fill="#000000" font-size="10" font-family="Arial">nvarchar(100)</text>
+   <text x="840" y="850" fill="#000000" font-size="10" font-family="Arial">nvarchar(1000)</text>
+   <text x="918" y="759" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <text x="918" y="772" fill="#000000" font-size="10" font-family="Arial">&lt;fk1&gt;</text>
+   <text x="918" y="798" fill="#000000" font-size="10" font-family="Arial">&lt;fk2&gt;</text>
+   <rect x="887" y="541" fill="#c0ffc0" width="190" height="65" stroke="#0000ff" stroke-width="1"/>
+   <text x="982" y="554" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">TransactionTypes</text>
+   <line x1="887" x2="1077" y1="561" y2="561" stroke="#0000ff" stroke-width="1"/>
+   <text x="891" y="571" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">TransType</text>
+   <text x="891" y="584" fill="#000000" font-size="10" font-family="Arial">TransTypeName</text>
+   <text x="891" y="597" fill="#000000" font-size="10" font-family="Arial">CreditDebitFlag</text>
+   <text x="976" y="571" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">int</text>
+   <text x="976" y="584" fill="#000000" font-size="10" font-family="Arial">nvarchar(100)</text>
+   <text x="976" y="597" fill="#000000" font-size="10" font-family="Arial">char(1)</text>
+   <text x="1048" y="571" fill="#000000" font-size="10" font-family="Arial" text-decoration="underline">&lt;pk&gt;</text>
+   <rect x="992" y="358" rx="13" ry="13" fill="#d0d0ff" width="119" height="108" stroke="#0000ff" stroke-width="1"/>
+   <text x="1050" y="371" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">ViewCustomerOrders</text>
+   <line x1="992" x2="1111" y1="378" y2="378" stroke="#0000ff" stroke-width="1"/>
+   <text x="1002" y="388" fill="#000000" font-size="10" font-family="Arial">CustomerID</text>
+   <text x="1002" y="401" fill="#000000" font-size="10" font-family="Arial">FullName</text>
+   <text x="1002" y="414" fill="#000000" font-size="10" font-family="Arial">OrderDate</text>
+   <text x="1002" y="427" fill="#000000" font-size="10" font-family="Arial">SumOfTotalAmount</text>
+   <line x1="992" x2="1111" y1="434" y2="434" stroke="#0000ff" stroke-width="1"/>
+   <text x="1022" y="444" fill="#000000" font-size="10" font-family="Arial">Customers</text>
+   <text x="1022" y="457" fill="#000000" font-size="10" font-family="Arial">Orders</text>
+   <polyline fill="none" points="1004,447 1015,447 1015,437 1004,437 1004,447 1004,440 1015,440" stroke="#000000" stroke-width="1"/>
+   <polyline fill="none" points="1004,460 1015,460 1015,450 1004,450 1004,460 1004,453 1015,453" stroke="#000000" stroke-width="1"/>
+   <rect x="278" y="178" rx="2" ry="2" fill="#ffffc0" width="134" height="18" stroke="#0000ff" stroke-width="1"/>
+   <image x="284" y="182" width="10" height="10" xlink:href="ER Diagrams_svg_Files/svg_bitmap1.png"/>
+   <text x="353" y="190" fill="#000000" font-size="10" font-family="Arial" text-anchor="middle">usp_OrderToFactSales</text>
+</svg>
