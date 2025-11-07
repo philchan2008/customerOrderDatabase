@@ -1,0 +1,89 @@
+/*****************************************************************************************************
+A client has said they are trying to build a new database and they would like our help to ensure
+that it will scale and performs with load.  They don't really know what they are doing but 
+have made a start.  Can you have a look and produce a list of all the changes you would
+make to this database creation script.
+
+Please ensure that if the script was run with your amendments that the database is created following all best practices.
+
+If you wish to add additional tables then that is absolutely fine, equally columns can be renamed if you deem that appropriate.
+
+*****************************************************************************************************/
+
+Create Database DevRoleDB
+
+-- Create Customers table
+CREATE TABLE Customers (
+    CustomerID NVARCHAR(50),
+    FullName NVARCHAR(255),
+    FirstName NVARCHAR(255),
+    LastName NVARCHAR(255),
+    AddressLine NVARCHAR(500),
+    City NVARCHAR(100),
+    County NVARCHAR(100),
+    Postcode NVARCHAR(20),
+    PhoneNumber NVARCHAR(50),
+    EmailAddress NVARCHAR(255),
+    DateOfBirth NVARCHAR(50),
+    AccountBalance NVARCHAR(50)
+);
+
+-- Insert sample data
+INSERT INTO Customers VALUES
+(1, 'John Smith', 'John', 'Smith', '123 High Street', 'London', 'Greater London', 'SW1A 1AA', '07123456789', 'john.smith@example.com', '01/01/1980', '1000.50'),
+(1, 'Jane Doe', 'Jane', 'Doe', '456 Market Road', 'Manchester', 'Greater Manchester', 'M1 2AB', '07234567890', 'jane.doe@example.com', '15/05/1985', '250.75');
+
+-- Create Orders table
+CREATE TABLE Orders (
+    OrderID NVARCHAR(50),
+    CustomerID NVARCHAR(50),
+    CustomerName NVARCHAR(255),
+    OrderDate NVARCHAR(50),
+    TotalAmount NVARCHAR(50),
+    Status NVARCHAR(50)
+);
+
+-- Insert sample data
+INSERT INTO Orders VALUES
+(1, 1, 'John Smith', '2023-01-01', '100.00', 'Completed'),
+(2, 2, 'Jane Doe', '2023-02-15', '250.75', 'Pending');
+
+-- Create Products table
+CREATE TABLE Products (
+    ProductID NVARCHAR(50),
+    ProductName NVARCHAR(255),
+    Description NVARCHAR(MAX),
+    Price NVARCHAR(50), 
+    StockQuantity NVARCHAR(50) 
+);
+
+-- Insert sample data
+INSERT INTO Products VALUES
+(1, 'Widget A', 'Basic widget', '10.00', '100'),
+(2, 'Widget B', 'Advanced widget', '25.00', '50');
+
+-- Create OrderDetails table
+CREATE TABLE OrderDetails (
+    OrderDetailID NVARCHAR(50),
+    OrderID NVARCHAR(50),
+    ProductID NVARCHAR(50),
+    ProductName NVARCHAR(255),
+    Quantity NVARCHAR(50),
+    LineTotal NVARCHAR(50) 
+);
+
+-- Insert sample data
+INSERT INTO OrderDetails VALUES
+(1, 'O001', 'P001', 'Widget A', '2', '20.00'),
+(2, 'O002', 'P002', 'Widget B', '5', '125.00');
+
+
+-- The client would like a full list of all Customers and what they have ordered by date  in a specified date range, 
+-- they need the customer name, the product name and total cost of each order
+-- this code needs to be reusable
+
+
+
+
+
+
