@@ -30,7 +30,7 @@ BEGIN
     SET @i = @i + 1
 END;
 
-select * from Customers;
+--select * from Customers;
 
 --delete from Products;
 --DBCC CHECKIDENT ('Products', RESEED, 0);
@@ -54,7 +54,7 @@ BEGIN
     SET @i = @i + 1
 END;
 
-select * from Products;
+--select * from Products;
 
 --delete OrderDetails
 --delete Orders
@@ -121,6 +121,65 @@ CLOSE OrderCursor
 DEALLOCATE OrderCursor
 go
 
+INSERT INTO CustomerAccountBalanceTransactions (
+    CustomerID,
+    TransactionDate,
+    AccountBalance,
+    TransactionAmount,
+    Reference,
+    Notes
+)
+SELECT
+    C.CustomerID,
+    DATEADD(DAY, -ABS(CHECKSUM(NEWID()) % 365), GETDATE()), -- random date within past year
+    CAST(RAND(CHECKSUM(NEWID())) * 1000 AS DECIMAL(18,2)), -- random balance
+    CAST((RAND(CHECKSUM(NEWID())) * 200 - 100) AS DECIMAL(18,2)), -- random amount between -100 and +100
+    '<ref><refNo>' + CAST(CAST((RAND(CHECKSUM(NEWID())) * 10000) AS INT) as VARCHAR(10)) + '</refNo></ref>', -- or use '<ref>Sample</ref>' if you want XML
+    CONCAT('Sample transaction for ', C.FullName)
+FROM (
+    SELECT TOP 5000 CustomerID, FullName
+    FROM Customers c
+	WHERE NOT EXISTS (select 1 from CustomerAccountBalanceTransactions x
+		WHERE x.CustomerID = c.CustomerID)
+    ORDER BY NEWID()
+) C;
+
+--delete ProductTransactions
+
+INSERT INTO ProductTransactions (
+    ProductID,
+    TransDate,
+    TransType,
+    TransQuantity,
+    StockQuantity,
+    UnitPrice,
+    Reference,
+    Notes
+)
+SELECT
+    OD.ProductID,
+    O.OrderDate,
+    2, -- Assuming TransType = 2 means "Stock Out"
+    -1 * OD.Quantity,
+    NULL, -- StockQuantity can be updated later if tracked
+    OD.UnitPrice,
+    CAST('<OrderID>' + CAST(OD.OrderID AS NVARCHAR) + '</OrderID>' +
+         '<OrderDetailID>' + CAST(OD.OrderDetailID AS NVARCHAR) + '</OrderDetailID>' +
+         '<ProductName>' + OD.ProductName + '</ProductName>' AS XML),
+    'Generated from OrderDetails'
+FROM CustDB.dbo.OrderDetails OD
+INNER JOIN CustDB.dbo.Orders O ON OD.OrderID = O.OrderID
+WHERE OD.ProductID IS NOT NULL;
+
+update ProductTransactions
+set StockQuantity = x.StockQuantity
+from ProductTransactions pt
+join Products x on pt.ProductID = x.ProductID
+where pt.StockQuantity is null
+;
+
+
+/*
 select * from OrderDetails;
 select * from Orders;
 
@@ -159,6 +218,7 @@ select c.CustomerID , r.OrderDate, r.OrderID, r.ProductID, r.ProductName, r.Tota
 from Customers c 
 left join result1 r on c.CustomerID = r.CustomerID
 ;
+*/
     
 --List customers who has order in the system
 exec dbo.rpt_CustomerProductByOrder '2025-09-01','2025-09-30', 0;

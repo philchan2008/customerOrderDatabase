@@ -3,12 +3,8 @@
 /* Created on:     11/8/2025 7:44:23 AM                         */
 /*==============================================================*/
 
-
-/*==============================================================*/
-/* Table: CustomerAccountBalanceTransactions                    */
-/*==============================================================*/
 create table CustomerAccountBalanceTransactions (
-   TransactionID        bigint               not null,
+   TransactionID        bigint               identity,
    CustomerID           bigint               null,
    TransactionDate      datetime             null,
    AccountBalance       decimal(18,2)        null,
@@ -18,6 +14,7 @@ create table CustomerAccountBalanceTransactions (
    constraint PK_CUSTOMERACCOUNTBALANCETRANS primary key nonclustered (TransactionID)
 )
 go
+
 
 /*==============================================================*/
 /* Table: Customers                                             */
@@ -434,3 +431,22 @@ begin
 end
 go
 
+/*==============================================================*/
+/* View: ViewLatestCustomerBalance                              */
+/*==============================================================*/
+create view ViewLatestCustomerBalance as
+SELECT
+    C.CustomerID,
+    C.FullName,
+    T.AccountBalance,
+    T.TransactionDate,
+    T.TransactionAmount,
+    T.TransactionID
+FROM Customers C
+OUTER APPLY (
+    SELECT TOP 1 *
+    FROM CustomerAccountBalanceTransactions T
+    WHERE T.CustomerID = C.CustomerID
+    ORDER BY T.TransactionDate DESC, T.TransactionID DESC
+) T
+go
