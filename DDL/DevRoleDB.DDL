@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     11/8/2025 5:35:32 PM                         */
+/* Created on:     11/8/2025 7:02:50 PM                         */
 /*==============================================================*/
 
 
@@ -174,7 +174,7 @@ go
 create table Orders (
    OrderID              bigint               identity,
    CustomerID           bigint               null,
-   OrderDate            date                 null,
+   OrderDate            date                 null default getdate(),
    TotalAmount          decimal(18,2)        null,
    StatusID             int                  null,
    constraint PK_ORDERS primary key (OrderID)
@@ -372,6 +372,27 @@ OUTER APPLY (
 ) T
 go
 
+/*==============================================================*/
+/* View: ViewProductStockQuantity                               */
+/*==============================================================*/
+create view ViewProductStockQuantity as
+SELECT
+    P.ProductID,
+    P.ProductName,
+    P.Price,
+    T.TransDate,
+    T.TransQuantity,
+    T.StockQuantity,
+    T.TransactionID
+FROM Products P
+OUTER APPLY (
+    SELECT TOP 1 *
+    FROM ProductTransactions T
+    WHERE T.ProductID = P.ProductID
+    ORDER BY T.TransDate DESC, T.TransactionID DESC
+) T
+go
+
 alter table CustomerAccountBalanceTransactions
    add constraint FK_CUSTOMER_REF_CUSTO_CUSTOMER foreign key (CustomerID)
       references Customers (CustomerID)
@@ -447,7 +468,7 @@ begin
     if @showAllCustomers = 1
     begin
         select c.CustomerID , c.FullName as CustomerFullName, r.OrderDate, 
-                r.OrderID, r.ProductName, r.TotalQtyByOrder, r.TotalCostByOrder
+                r.OrderID, r.ProductID, r.ProductName, r.TotalQtyByOrder, r.TotalCostByOrder
         from Customers c 
         left join #tmpResult r on c.CustomerID = r.CustomerID
      end
