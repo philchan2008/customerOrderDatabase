@@ -17,3 +17,11 @@
     `exec dbo.rpt_CustomerProductByOrder '2025-09-01','2025-09-30', 0;`
   - --List all customers
     `exec dbo.rpt_CustomerProductByOrder '2025-09-01','2025-09-30', 1;`
+
+
+# Original Schema
+
+![](https://raw.githubusercontent.com/philchan2008/customerOrderDatabase/refs/heads/main/Original%20DB.svg)
+
+# Updated Schema
+![](https://raw.githubusercontent.com/philchan2008/customerOrderDatabase/refs/heads/main/ER%20Diagrams.svg)
