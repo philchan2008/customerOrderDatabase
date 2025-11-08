@@ -19,17 +19,23 @@ BEGIN
         LEFT(CONVERT(NVARCHAR(255), NEWID()), 5) + ' ' + LEFT(CONVERT(NVARCHAR(255), NEWID()), 6),
         LEFT(CONVERT(NVARCHAR(255), NEWID()), 5),
         LEFT(CONVERT(NVARCHAR(255), NEWID()), 6),
-        'No. ' + CAST(ABS(CHECKSUM(NEWID())) % 100 AS NVARCHAR) + ' Random Street',
+        CAST(ABS(CHECKSUM(NEWID())) % 100 AS NVARCHAR) + ' Random Street',
         CHOOSE(ABS(CHECKSUM(NEWID())) % 5 + 1, 'London', 'Manchester', 'Leeds', 'Bristol', 'Nottingham'),
-        CHOOSE(ABS(CHECKSUM(NEWID())) % 5 + 1, 'Greater London', 'Greater Manchester', 'West Yorkshire', 'Somerset', 'Nottinghamshire'),
-        CAST(ABS(CHECKSUM(NEWID())) % 90000 + 10000 AS NVARCHAR),
+        CHOOSE(ABS(CHECKSUM(NEWID())) % 5 + 1, 'Greater London', 'Greater Manchester', 'Yorkshire', 'Birmingham', 'Nottinghamshire'),
+        --CAST(ABS(CHECKSUM(NEWID())) % 90000 + 10000 AS NVARCHAR),
+		CHAR(65 + ABS(CHECKSUM(NEWID())) % 26) +
+			CHAR(65 + ABS(CHECKSUM(NEWID())) % 26) +
+			CAST(ABS(CHECKSUM(NEWID())) % 10 AS NVARCHAR) + ' ' +
+			CAST(ABS(CHECKSUM(NEWID())) % 10 AS NVARCHAR) +
+			CHAR(65 + ABS(CHECKSUM(NEWID())) % 26) +
+			CHAR(65 + ABS(CHECKSUM(NEWID())) % 26),
         '07700' + CAST(ABS(CHECKSUM(NEWID())) % 900000 AS NVARCHAR),
         LEFT(CONVERT(NVARCHAR(255), NEWID()), 8) + '@example.com',
         DATEADD(DAY, -ABS(CHECKSUM(NEWID())) % 12000, GETDATE()) -- Random DOB in past ~30 years
     )
     SET @i = @i + 1
 END;
-
+GO
 --select * from Customers;
 
 --delete from Products;
@@ -53,7 +59,7 @@ BEGIN
     )
     SET @i = @i + 1
 END;
-
+GO
 --select * from Products;
 
 --delete OrderDetails
@@ -66,8 +72,8 @@ DECLARE @OrderDate DATE
 WHILE @i < 3000  -- Number of orders to generate
 BEGIN
     -- Random CustomerID
-    SELECT TOP 1 @CustomerID = CustomerID 
-    FROM Customers 
+    SELECT TOP 1 @CustomerID = CustomerID
+    FROM Customers
     WHERE CustomerID % 2 = 0
     ORDER BY NEWID()
     -- Random OrderDate in last 90 days
@@ -77,7 +83,7 @@ BEGIN
     SET @i = @i + 1
 END;
 
-select * from Orders;
+--select * from Orders;
 
 --OrderDetails
 DECLARE @OrderID BIGINT
@@ -88,7 +94,7 @@ DECLARE @Quantity INT
 DECLARE @LineTotal DECIMAL(18,2)
 DECLARE @TotalAmount DECIMAL(18,2)
 -- Loop through each order
-DECLARE OrderCursor CURSOR FOR 
+DECLARE OrderCursor CURSOR FOR
 	SELECT OrderID FROM Orders
 OPEN OrderCursor
 FETCH NEXT FROM OrderCursor INTO @OrderID
@@ -99,7 +105,7 @@ BEGIN
     WHILE @j < 3  -- 3 items per order
     BEGIN
         -- Random Product
-        SELECT TOP 1 
+        SELECT TOP 1
             @ProductID = ProductID,
             @ProductName = ProductName,
             @UnitPrice = Price
@@ -143,6 +149,7 @@ FROM (
 		WHERE x.CustomerID = c.CustomerID)
     ORDER BY NEWID()
 ) C;
+GO
 
 --delete ProductTransactions
 
@@ -170,6 +177,7 @@ SELECT
 FROM CustDB.dbo.OrderDetails OD
 INNER JOIN CustDB.dbo.Orders O ON OD.OrderID = O.OrderID
 WHERE OD.ProductID IS NOT NULL;
+GO
 
 update ProductTransactions
 set StockQuantity = x.StockQuantity
@@ -177,7 +185,7 @@ from ProductTransactions pt
 join Products x on pt.ProductID = x.ProductID
 where pt.StockQuantity is null
 ;
-
+GO
 
 /*
 select * from OrderDetails;
@@ -185,16 +193,16 @@ select * from Orders;
 
 select o.OrderID , count(*)
 from Orders o
-join OrderDetails od on o.OrderID = od.OrderID 
-group by o.OrderID 
+join OrderDetails od on o.OrderID = od.OrderID
+group by o.OrderID
 
 select o.CustomerID , count(*)
 from Orders o
-join OrderDetails od on o.OrderID = od.OrderID 
-group by o.CustomerID 
+join OrderDetails od on o.OrderID = od.OrderID
+group by o.CustomerID
 
 
-with result1 (CustomerID, OrderDate, OrderID, ProductID, ProductName, TotalCostByOrder) as 
+with result1 (CustomerID, OrderDate, OrderID, ProductID, ProductName, TotalCostByOrder) as
 (
 	select
         c.CustomerID,
@@ -215,13 +223,15 @@ with result1 (CustomerID, OrderDate, OrderID, ProductID, ProductName, TotalCostB
         p.ProductName
 )
 select c.CustomerID , r.OrderDate, r.OrderID, r.ProductID, r.ProductName, r.TotalCostByOrder
-from Customers c 
+from Customers c
 left join result1 r on c.CustomerID = r.CustomerID
 ;
-*/
-    
+
+
 --List customers who has order in the system
 exec dbo.rpt_CustomerProductByOrder '2025-09-01','2025-09-30', 0;
 
 --List all customers
 exec dbo.rpt_CustomerProductByOrder '2025-09-01','2025-09-30', 1;
+
+*/

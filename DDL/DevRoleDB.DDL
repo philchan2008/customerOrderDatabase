@@ -1,8 +1,12 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     11/8/2025 7:44:23 AM                         */
+/* Created on:     11/8/2025 5:35:32 PM                         */
 /*==============================================================*/
 
+
+/*==============================================================*/
+/* Table: CustomerAccountBalanceTransactions                    */
+/*==============================================================*/
 create table CustomerAccountBalanceTransactions (
    TransactionID        bigint               identity,
    CustomerID           bigint               null,
@@ -14,7 +18,6 @@ create table CustomerAccountBalanceTransactions (
    constraint PK_CUSTOMERACCOUNTBALANCETRANS primary key nonclustered (TransactionID)
 )
 go
-
 
 /*==============================================================*/
 /* Table: Customers                                             */
@@ -316,6 +319,59 @@ INSERT INTO TransactionTypes (TransType, TransTypeName, CreditDebitFlag) VALUES
 
 SET IDENTITY_INSERT TransactionTypes OFF;
 
+/*==============================================================*/
+/* View: ViewCustomerProductByOrder                             */
+/*==============================================================*/
+create view ViewCustomerProductByOrder as
+with result1 (CustomerID, CustomerFullName, OrderDate, OrderID, 
+    ProductID, ProductName, TotalQtyByOrder, TotalCostByOrder) as (
+    select
+        c.CustomerID,
+		c.FullName as CustomerFullName,
+        o.OrderDate,
+        o.OrderID, --for getting total cost of each order
+        p.ProductID,
+        p.ProductName,
+        sum(od.Quantity) as TotalQtyByOrder,
+        sum(od.LineTotal) as TotalCostByOrder
+    from Customers c
+    right join Orders o on o.CustomerID = c.CustomerID
+    join OrderDetails od on od.OrderID = o.OrderID
+    join Products p on p.ProductID = od.ProductID
+    where o.StatusID = 2 -- Completed
+     group by c.CustomerID,
+		c.FullName,
+        o.OrderDate,
+        o.OrderID,
+        p.ProductID,
+        p.ProductName
+)
+select c.CustomerID , c.FullName as CustomerFullName, r.OrderDate, 
+                r.OrderID, r.ProductName, r.TotalQtyByOrder, r.TotalCostByOrder
+from Customers c 
+left join result1 r on c.CustomerID = r.CustomerID
+go
+
+/*==============================================================*/
+/* View: ViewLatestCustomerBalance                              */
+/*==============================================================*/
+create view ViewLatestCustomerBalance as
+SELECT
+    C.CustomerID,
+    C.FullName,
+    T.AccountBalance,
+    T.TransactionDate,
+    T.TransactionAmount,
+    T.TransactionID
+FROM Customers C
+OUTER APPLY (
+    SELECT TOP 1 *
+    FROM CustomerAccountBalanceTransactions T
+    WHERE T.CustomerID = C.CustomerID
+    ORDER BY T.TransactionDate DESC, T.TransactionID DESC
+) T
+go
+
 alter table CustomerAccountBalanceTransactions
    add constraint FK_CUSTOMER_REF_CUSTO_CUSTOMER foreign key (CustomerID)
       references Customers (CustomerID)
@@ -431,22 +487,3 @@ begin
 end
 go
 
-/*==============================================================*/
-/* View: ViewLatestCustomerBalance                              */
-/*==============================================================*/
-create view ViewLatestCustomerBalance as
-SELECT
-    C.CustomerID,
-    C.FullName,
-    T.AccountBalance,
-    T.TransactionDate,
-    T.TransactionAmount,
-    T.TransactionID
-FROM Customers C
-OUTER APPLY (
-    SELECT TOP 1 *
-    FROM CustomerAccountBalanceTransactions T
-    WHERE T.CustomerID = C.CustomerID
-    ORDER BY T.TransactionDate DESC, T.TransactionID DESC
-) T
-go
