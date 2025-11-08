@@ -1,17 +1,21 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     11/7/2025 2:56:03 PM                         */
+/* Created on:     11/8/2025 7:44:23 AM                         */
 /*==============================================================*/
+
+
 /*==============================================================*/
-/* Table: CustomerAccountBalance                                */
+/* Table: CustomerAccountBalanceTransactions                    */
 /*==============================================================*/
-create table CustomerAccountBalance (
+create table CustomerAccountBalanceTransactions (
    TransactionID        bigint               not null,
    CustomerID           bigint               null,
    TransactionDate      datetime             null,
    AccountBalance       decimal(18,2)        null,
    TransactionAmount    decimal(18,2)        null,
-   constraint PK_CUSTOMERACCOUNTBALANCE primary key (TransactionID)
+   Reference            xml                  null,
+   Notes                nvarchar(1000)       null,
+   constraint PK_CUSTOMERACCOUNTBALANCETRANS primary key nonclustered (TransactionID)
 )
 go
 
@@ -30,53 +34,60 @@ create table Customers (
    PhoneNumber          nvarchar(50)         null,
    EmailAddress         nvarchar(255)        null,
    DateOfBirth          date                 null,
+   AccountBalance       decimal(18,2)        null default 0,
+   CreatedBy            varchar(50)          null default user,
+   CreatedAt            datetime             null default getdate(),
+   UpdatedBy            varchar(50)          null,
+   UpdatedAt            datetime             null,
    constraint PK_CUSTOMERS primary key (CustomerID)
 )
 go
 
 /*==============================================================*/
-/* Table: DimDate                                               */
+/* Index: IX_CUSTOMERSPHONE                                     */
 /*==============================================================*/
-create table DimDate (
-   DateKey              int                  not null,
-   FullDate             date                 null,
-   Day                  int                  null,
-   Month                int                  null,
-   Year                 int                  null,
-   Week                 int                  null,
-   Quarter              int                  null,
-   IsWeekend            bit                  null,
-   IsHoliday            bit                  null,
-   DayName              nvarchar(100)        null,
-   MonthName            nvarchar(100)        null,
-   constraint PK_DIMDATE primary key (DateKey)
+create index IX_CUSTOMERSPHONE on Customers (
+PhoneNumber ASC
 )
 go
 
 /*==============================================================*/
-/* Table: FactSales                                             */
+/* Index: IX_CUSTOEMRSEMAIL                                     */
 /*==============================================================*/
-create table FactSales (
-   SalesID              bigint               identity(1,1),
-   OrderID              bigint               null,
-   OrderDetailID        bigint               null,
-   CustomerID           bigint               null,
-   ProductID            bigint               null,
-   DateKey              int                  null,
-   Quantity             int                  null,
-   SalesAmount          decimal(18,2)        null,
-   Status               nvarchar(50)         null,
-   constraint PK_FACTSALES primary key (SalesID)
+create index IX_CUSTOEMRSEMAIL on Customers (
+EmailAddress ASC
 )
 go
 
 /*==============================================================*/
-/* Table: Holidays                                              */
+/* Index: IX_CUSTOMERSPOSTCODE                                  */
 /*==============================================================*/
-create table Holidays (
-   HolidayDate          date                 not null,
-   HolidayDesc          nvarchar(50)         null,
-   constraint PK_HOLIDAYS primary key (HolidayDate)
+create index IX_CUSTOMERSPOSTCODE on Customers (
+Postcode ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_CUSTOMERSCITY                                      */
+/*==============================================================*/
+create index IX_CUSTOMERSCITY on Customers (
+City ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_CUSTOMERSFULLNAME                                  */
+/*==============================================================*/
+create index IX_CUSTOMERSFULLNAME on Customers (
+FullName ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_CUSTOMERSLASTNAME                                  */
+/*==============================================================*/
+create index IX_CUSTOMERSLASTNAME on Customers (
+LastName ASC
 )
 go
 
@@ -90,8 +101,49 @@ create table OrderDetails (
    ProductName          nvarchar(255)        null,
    Quantity             integer              null,
    UnitPrice            decimal(18,2)        null,
-   LineAmount           decimal(18,2)        null,
+   LineTotal            decimal(18,2)        null,
    constraint PK_ORDERDETAILS primary key (OrderDetailID)
+)
+go
+
+/*==============================================================*/
+/* Index: IX_OD_ORDERID                                         */
+/*==============================================================*/
+create index IX_OD_ORDERID on OrderDetails (
+OrderID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_OD_PRODID                                          */
+/*==============================================================*/
+create index IX_OD_PRODID on OrderDetails (
+ProductID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_OD_QTY                                             */
+/*==============================================================*/
+create index IX_OD_QTY on OrderDetails (
+Quantity ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_OD_UNITPRICE                                       */
+/*==============================================================*/
+create index IX_OD_UNITPRICE on OrderDetails (
+UnitPrice ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_OD_ORDERPROD                                       */
+/*==============================================================*/
+create index IX_OD_ORDERPROD on OrderDetails (
+OrderID ASC,
+ProductID ASC
 )
 go
 
@@ -107,12 +159,12 @@ go
 
 
 SET IDENTITY_INSERT OrderStatus ON;
---
+
 insert OrderStatus (StatusID, Status)
 select 1, 'Pending' union
 select 2, 'Completed'
 ;
---
+
 SET IDENTITY_INSERT OrderStatus OFF;
 go
 
@@ -129,40 +181,69 @@ create table Orders (
 )
 go
 
+CREATE STATISTICS [_dta_stat_1077578877_2_5] ON [dbo].[Orders]([CustomerID], [StatusID])
+WITH AUTO_DROP = OFF
+go  
+
 /*==============================================================*/
-/* Table: ProducTransactions                                    */
+/* Index: IX_ORDERCUSTOMERS                                     */
 /*==============================================================*/
-create table ProducTransactions (
+create index IX_ORDERCUSTOMERS on Orders (
+CustomerID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_ORDERDATE                                          */
+/*==============================================================*/
+create index IX_ORDERDATE on Orders (
+OrderDate ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_ORDERSTATUS                                        */
+/*==============================================================*/
+create index IX_ORDERSTATUS on Orders (
+StatusID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_ORDERAMOUNT                                        */
+/*==============================================================*/
+create index IX_ORDERAMOUNT on Orders (
+TotalAmount ASC
+)
+go
+
+/*==============================================================*/
+/* Table: ProductPriceHistory                                   */
+/*==============================================================*/
+create table ProductPriceHistory (
+   PriceHistoryID       bigint               identity,
+   TransDate            datetime             null default getdate(),
+   ProductID            bigint               null,
+   OldPrice             decimal(18,2)        null,
+   NewPrice             decimal(18,2)        null,
+   constraint PK_PRODUCTPRICEHISTORY primary key (PriceHistoryID)
+)
+go
+
+/*==============================================================*/
+/* Table: ProductTransactions                                   */
+/*==============================================================*/
+create table ProductTransactions (
    TransactionID        bigint               identity,
    ProductID            bigint               not null,
    TransDate            datetime             not null,
    TransType            int                  null,
-   TransQuantity        integer              null,
+   TransQuantity        int                  null,
+   StockQuantity        int                  null,
    UnitPrice            decimal(18,2)        null,
-   Reference            nvarchar(100)        null,
+   Reference            xml                  null,
    Notes                nvarchar(1000)       null,
-   constraint PK_PRODUCTRANSACTIONS primary key (TransactionID)
-)
-go
-
-/*==============================================================*/
-/* Table: ProductCategories                                     */
-/*==============================================================*/
-create table ProductCategories (
-   ProdCatID            bigint               not null,
-   ProdCatDesc          nvarchar(255)        not null,
-   constraint PK_PRODUCTCATEGORIES primary key (ProdCatID)
-)
-go
-
-/*==============================================================*/
-/* Table: ProductPrices                                         */
-/*==============================================================*/
-create table ProductPrices (
-   ProductID            bigint               identity,
-   EffectiveDate        datetime             not null,
-   Price                decimal(18,2)        null,
-   constraint PK_PRODUCTPRICES primary key (ProductID, EffectiveDate)
+   constraint PK_PRODUCTTRANSACTIONS primary key (TransactionID)
 )
 go
 
@@ -172,11 +253,46 @@ go
 create table Products (
    ProductID            bigint               identity,
    ProductName          nvarchar(255)        null,
-   ProdCatID            bigint               null,
    Description          nvarchar(255)        null,
-   Price                decimal(18,2)        null,
-   StockQuantity        integer              null,
+   Price                decimal(18,2)        null default 0,
+   StockQuantity        int                  null default 0,
+   CreatedBy            varchar(50)          null default user,
+   CreatedAt            datetime             null default getdate(),
+   UpdatedBy            varchar(50)          null,
+   UpdatedAt            datetime             null,
    constraint PK_PRODUCTS primary key (ProductID)
+)
+go
+
+/*==============================================================*/
+/* Index: IX_PRODNAME                                           */
+/*==============================================================*/
+create index IX_PRODNAME on Products (
+ProductName ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_PRODPRICE                                          */
+/*==============================================================*/
+create index IX_PRODPRICE on Products (
+Price ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_PRODSTOCKQTY                                       */
+/*==============================================================*/
+create index IX_PRODSTOCKQTY on Products (
+StockQuantity ASC
+)
+go
+
+/*==============================================================*/
+/* Index: IX_PRODID                                             */
+/*==============================================================*/
+create index IX_PRODID on Products (
+ProductID ASC
 )
 go
 
@@ -203,171 +319,118 @@ INSERT INTO TransactionTypes (TransType, TransTypeName, CreditDebitFlag) VALUES
 
 SET IDENTITY_INSERT TransactionTypes OFF;
 
-/*==============================================================*/
-/* View: ViewCustomerOrders                                     */
-/*==============================================================*/
-create view ViewCustomerOrders as
-select
-    c.CustomerID,
-    c.FullName,
-    o.OrderDate,
-    sum(o.TotalAmount) as SumOfTotalAmount
-from Customers c
-join Orders o on o.CustomerID = c.CustomerID
-where o.StatusID = 2 -- Completed
-group by c.CustomerID,
-    c.FullName,
-    o.OrderDate
-go
-
-alter table CustomerAccountBalance
-   add constraint FK_CUSTOMER_REFERENCE_CUSTOMER foreign key (CustomerID)
+alter table CustomerAccountBalanceTransactions
+   add constraint FK_CUSTOMER_REF_CUSTO_CUSTOMER foreign key (CustomerID)
       references Customers (CustomerID)
-go
-
-alter table FactSales
-   add constraint FK_FACTSALE_REFERENCE_DIMDATE foreign key (DateKey)
-      references DimDate (DateKey)
-go
-
-alter table FactSales
-   add constraint FK_FACTSALE_REFERENCE_CUSTOMER foreign key (CustomerID)
-      references Customers (CustomerID)
-go
-
-alter table FactSales
-   add constraint FK_FACTSALE_REFERENCE_ORDERS foreign key (OrderID)
-      references Orders (OrderID)
-go
-
-alter table FactSales
-   add constraint FK_FACTSALE_REFERENCE_ORDERDET foreign key (OrderDetailID)
-      references OrderDetails (OrderDetailID)
-go
-
-alter table FactSales
-   add constraint FK_FACTSALE_REFERENCE_PRODUCTS foreign key (ProductID)
-      references Products (ProductID)
 go
 
 alter table OrderDetails
-   add constraint FK_ORDERDET_REFERENCE_ORDERS foreign key (OrderID)
+   add constraint FK_ORDERDET_REF_ORDER_ORDERS foreign key (OrderID)
       references Orders (OrderID)
 go
 
 alter table OrderDetails
-   add constraint FK_ORDERDET_REFERENCE_PRODUCTS foreign key (ProductID)
+   add constraint FK_ORDERDET_REF_PRODU_PRODUCTS foreign key (ProductID)
       references Products (ProductID)
 go
 
 alter table Orders
-   add constraint FK_ORDERS_REFERENCE_CUSTOMER foreign key (CustomerID)
+   add constraint FK_ORDERS_REF_CUSTO_CUSTOMER foreign key (CustomerID)
       references Customers (CustomerID)
 go
 
 alter table Orders
-   add constraint FK_ORDERS_REFERENCE_ORDERSTA foreign key (StatusID)
+   add constraint FK_ORDERS_REF_ORDER_ORDERSTA foreign key (StatusID)
       references OrderStatus (StatusID)
 go
 
-alter table ProducTransactions
-   add constraint FK_PRODUCTR_REFERENCE_PRODUCTS foreign key (ProductID)
+alter table ProductPriceHistory
+   add constraint FK_PRODUCTP_REF_PRODU_PRODUCTS foreign key (ProductID)
       references Products (ProductID)
 go
 
-alter table ProducTransactions
-   add constraint FK_PRODUCTR_REFERENCE_TRANSACT foreign key (TransType)
+alter table ProductTransactions
+   add constraint FK_PRODUCTT_REF_PRODU_PRODUCTS foreign key (ProductID)
+      references Products (ProductID)
+go
+
+alter table ProductTransactions
+   add constraint FK_PRODUCTT_REF_TRANS_TRANSACT foreign key (TransType)
       references TransactionTypes (TransType)
 go
 
-alter table ProductPrices
-   add constraint FK_PRODUCTP_REFERENCE_PRODUCTS foreign key (ProductID)
-      references Products (ProductID)
-go
 
-alter table Products
-   add constraint FK_PRODUCTS_REFERENCE_PRODUCTC foreign key (ProdCatID)
-      references ProductCategories (ProdCatID)
-go
-
-
-create procedure usp_OrderToFactSales as
+create procedure rpt_CustomerProductByOrder
+    @fromDate date,
+    @toDate date,
+    @showAllCustomers bit
+as
 begin
-    delete FactSales where DateKey = CONVERT(NUMERIC(8,0), CONVERT(CHAR(8), getdate(), 112))
-    --
-    insert FactSales (OrderID, OrderDetailID, CustomerID, ProductID, DateKey, Quantity, SalesAmount)
-    select o.OrderID, od.OrderDetailID, c.CustomerID, p.ProductID, dd.DateKey, 
-    	sum(od.Quantity) as Quantity,
-    	sum(od.LineAmount) as SalesAmount
-    from DimDate dd 
-    join Orders o on o.OrderDate = dd.FullDate
-    join Customers c on o.CustomerID = c.CustomerID 
-    join OrderDetails od on od.OrderID = o.OrderID 
-    join Products p on p.ProductID = od.ProductID 
-    where o.StatusID = 2 --completed
-    and dd.FullDate = Cast(getdate() as Date)
-    group by o.OrderID, od.OrderDetailID, c.CustomerID, p.ProductID, dd.DateKey
+	set NOCOUNT ON
+    select
+        c.CustomerID,
+		c.FullName as CustomerFullName,
+        o.OrderDate,
+        o.OrderID, --for getting total cost of each order
+        p.ProductID,
+        p.ProductName,
+        sum(od.Quantity) as TotalQtyByOrder,
+        sum(od.LineTotal) as TotalCostByOrder
+    into #tmpResult
+    from Customers c
+    right join Orders o on o.CustomerID = c.CustomerID
+    join OrderDetails od on od.OrderID = o.OrderID
+    join Products p on p.ProductID = od.ProductID
+    where o.StatusID = 2 -- Completed
+    and o.OrderDate >= @fromDate
+    and o.OrderDate <= @toDate
+     group by c.CustomerID,
+		c.FullName,
+        o.OrderDate,
+        o.OrderID,
+        p.ProductID,
+        p.ProductName
+                
+    if @showAllCustomers = 1
+    begin
+        select c.CustomerID , c.FullName as CustomerFullName, r.OrderDate, 
+                r.OrderID, r.ProductName, r.TotalQtyByOrder, r.TotalCostByOrder
+        from Customers c 
+        left join #tmpResult r on c.CustomerID = r.CustomerID
+     end
+     --
+     if @showAllCustomers = 0
+     begin
+         select * from #tmpResult
+     end
 end
 go
 
 
-CREATE PROCEDURE usp_PopulateDimDate
-    @StartDate DATE,
-    @EndDate DATE
-AS
-BEGIN
-    SET NOCOUNT ON
-    --
-    -- Create DimDate table if it doesn't exist
-    IF OBJECT_ID('DimDate', 'U') IS NULL
-    BEGIN
-        CREATE TABLE DimDate (
-            DateKey INT PRIMARY KEY,         -- Format: YYYYMMDD
-            FullDate DATE NOT NULL,
-            Day INT NOT NULL,
-            Month INT NOT NULL,
-            Year INT NOT NULL,
-            Week INT NOT NULL,
-            Quarter INT NOT NULL,
-            DayName NVARCHAR(20),
-            MonthName NVARCHAR(20),
-            IsWeekend BIT,
-            IsHoliday BIT
-        )
-    END
-    --
-    DECLARE @CurrentDate DATE = @StartDate
-    --
-    WHILE @CurrentDate <= @EndDate
-    BEGIN
-        DECLARE @IsHoliday BIT = CASE
-            WHEN EXISTS (
-                SELECT 1 FROM Holidays WHERE HolidayDate = @CurrentDate
-            ) THEN 1 ELSE 0 END;
+create trigger trg_UpdateCustomerBalance
+on CustomerAccountBalanceTransactions for insert
+as
+begin
+    set NOCOUNT ON;
 
-        INSERT INTO DimDate (
-            DateKey, FullDate, Day, Month, Year, Week, Quarter,
-            DayName, MonthName, IsWeekend, IsHoliday
-        )
-        VALUES (
-            CONVERT(INT, FORMAT(@CurrentDate, 'yyyyMMdd')),
-            @CurrentDate,
-            DAY(@CurrentDate),
-            MONTH(@CurrentDate),
-            YEAR(@CurrentDate),
-            DATEPART(WEEK, @CurrentDate),
-            DATEPART(QUARTER, @CurrentDate),
-            DATENAME(WEEKDAY, @CurrentDate),
-            DATENAME(MONTH, @CurrentDate),
-            CASE WHEN DATENAME(WEEKDAY, @CurrentDate) IN ('Saturday', 'Sunday') THEN 1 ELSE 0 END,
-            @IsHoliday
-        )
-        --
-        SET @CurrentDate = DATEADD(DAY, 1, @CurrentDate)
-    END
-END
+    -- Update each affected customer's balance
+    update c
+    set c.AccountBalance = isnull(c.AccountBalance,0) + isnull(i.TransactionAmount,0)
+    from Customers c
+    join inserted i on i.CustomerID = c.CustomerID
+END;
 go
 
-exec usp_PopulateDimDate '2025-01-01','2026-01-01'
+
+create trigger trg_hist_price on Products for insert, update as
+begin
+    if update(Price)
+    begin
+        insert ProductPriceHistory (ProductID, TransDate, OldPrice, NewPrice)
+        select i.ProductID, getdate(), d.Price, i.Price
+        from inserted i
+        left join deleted d on i.ProductID = d.ProductID
+    end
+end
 go
 
