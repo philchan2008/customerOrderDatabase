@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     11/8/2025 7:21:43 PM                         */
+/* Created on:     11/9/2025 9:20:14 AM                         */
 /*==============================================================*/
 
 
@@ -390,7 +390,7 @@ SELECT
     P.Price,
     T.TransDate,
     T.TransQuantity,
-    T.StockQuantity,
+    isnull(T.StockQuantity,0) as StockQuantity,
     T.TransactionID
 FROM Products P
 OUTER APPLY (

@@ -2755,7 +2755,7 @@ Shadow=0</a:DisplayPreferences>
 <a:ModificationDate>1762543799</a:ModificationDate>
 <a:SourceTextOffset>(1716, -2701)</a:SourceTextOffset>
 <a:DestinationTextOffset>(-247, -2193)</a:DestinationTextOffset>
-<a:Rect>((-16469,37515), (-5916,41515))</a:Rect>
+<a:Rect>((-20089,38234), (-3589,40796))</a:Rect>
 <a:ListOfPoints>((-5916,38234),(-16469,40796))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16711680</a:LineColor>
@@ -2775,7 +2775,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o18">
 <a:CreationDate>1762522216</a:CreationDate>
 <a:ModificationDate>1762527267</a:ModificationDate>
-<a:CenterTextOffset>(0, 66)</a:CenterTextOffset>
+<a:CenterTextOffset>(0, 67)</a:CenterTextOffset>
 <a:SourceTextOffset>(-163, 60)</a:SourceTextOffset>
 <a:DestinationTextOffset>(163, -59)</a:DestinationTextOffset>
 <a:Rect>((-23529,-14238), (-7329,1960))</a:Rect>
@@ -2798,7 +2798,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o22">
 <a:CreationDate>1762522956</a:CreationDate>
 <a:ModificationDate>1762527266</a:ModificationDate>
-<a:CenterTextOffset>(0, 77)</a:CenterTextOffset>
+<a:CenterTextOffset>(0, 78)</a:CenterTextOffset>
 <a:SourceTextOffset>(454, 194)</a:SourceTextOffset>
 <a:DestinationTextOffset>(-454, -194)</a:DestinationTextOffset>
 <a:Rect>((-13805,-11897), (2395,1128))</a:Rect>
@@ -2821,7 +2821,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o25">
 <a:CreationDate>1762523625</a:CreationDate>
 <a:ModificationDate>1762543786</a:ModificationDate>
-<a:CenterTextOffset>(7, 16)</a:CenterTextOffset>
+<a:CenterTextOffset>(7, 17)</a:CenterTextOffset>
 <a:SourceTextOffset>(1852, 1006)</a:SourceTextOffset>
 <a:DestinationTextOffset>(-1852, -1006)</a:DestinationTextOffset>
 <a:Rect>((-9574,-23351), (6476,-13662))</a:Rect>
@@ -2878,11 +2878,11 @@ If you wish to add additional tables then that is absolutely fine, equally colum
 </o:PredefinedSymbol>
 <o:ReferenceSymbol Id="o29">
 <a:CreationDate>1762357572</a:CreationDate>
-<a:ModificationDate>1762527233</a:ModificationDate>
-<a:SourceTextOffset>(986, 287)</a:SourceTextOffset>
-<a:DestinationTextOffset>(-987, -287)</a:DestinationTextOffset>
-<a:Rect>((-21461,15179), (-2138,36965))</a:Rect>
-<a:ListOfPoints>((-2138,15179),(-21461,36965))</a:ListOfPoints>
+<a:ModificationDate>1762679930</a:ModificationDate>
+<a:SourceTextOffset>(662, 82)</a:SourceTextOffset>
+<a:DestinationTextOffset>(-663, -81)</a:DestinationTextOffset>
+<a:Rect>((-23654,16379), (-8354,36965))</a:Rect>
+<a:ListOfPoints>((-12638,16379),(-21461,36965))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16711680</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -2900,11 +2900,11 @@ CARD 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o32">
 <a:CreationDate>1762357574</a:CreationDate>
-<a:ModificationDate>1762527271</a:ModificationDate>
-<a:SourceTextOffset>(-1366, 683)</a:SourceTextOffset>
-<a:DestinationTextOffset>(1366, -683)</a:DestinationTextOffset>
-<a:Rect>((-37374,-1456), (568,15376))</a:Rect>
-<a:ListOfPoints>((-37374,-1456),(568,15376))</a:ListOfPoints>
+<a:ModificationDate>1762679930</a:ModificationDate>
+<a:SourceTextOffset>(-1272, 511)</a:SourceTextOffset>
+<a:DestinationTextOffset>(1272, -511)</a:DestinationTextOffset>
+<a:Rect>((-37374,-1456), (-9932,16576))</a:Rect>
+<a:ListOfPoints>((-37374,-1456),(-9932,16576))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16711680</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -2923,7 +2923,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o35">
 <a:CreationDate>1762357609</a:CreationDate>
 <a:ModificationDate>1762527271</a:ModificationDate>
-<a:CenterTextOffset>(0, 64)</a:CenterTextOffset>
+<a:CenterTextOffset>(0, 65)</a:CenterTextOffset>
 <a:SourceTextOffset>(12, -69)</a:SourceTextOffset>
 <a:DestinationTextOffset>(-12, 67)</a:DestinationTextOffset>
 <a:Rect>((-34408,-3297), (-4700,2657))</a:Rect>
@@ -2945,12 +2945,12 @@ CARD 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o37">
 <a:CreationDate>1762445703</a:CreationDate>
-<a:ModificationDate>1762519902</a:ModificationDate>
-<a:CenterTextOffset>(13, 0)</a:CenterTextOffset>
-<a:SourceTextOffset>(-1599, -898)</a:SourceTextOffset>
-<a:DestinationTextOffset>(1599, 898)</a:DestinationTextOffset>
-<a:Rect>((-8769,14340), (6305,28341))</a:Rect>
-<a:ListOfPoints>((-4295,14340),(963,28341))</a:ListOfPoints>
+<a:ModificationDate>1762679930</a:ModificationDate>
+<a:CenterTextOffset>(15, 0)</a:CenterTextOffset>
+<a:SourceTextOffset>(-2109, -531)</a:SourceTextOffset>
+<a:DestinationTextOffset>(2109, 531)</a:DestinationTextOffset>
+<a:Rect>((-14795,15540), (2013,28341))</a:Rect>
+<a:ListOfPoints>((-14795,15540),(963,28341))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16711680</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -3008,8 +3008,8 @@ TableComment 0 Arial,8,N</a:FontList>
 </o:TableSymbol>
 <o:TableSymbol Id="o30">
 <a:CreationDate>1762357531</a:CreationDate>
-<a:ModificationDate>1762550254</a:ModificationDate>
-<a:Rect>((-8794,11783), (4518,18575))</a:Rect>
+<a:ModificationDate>1762679930</a:ModificationDate>
+<a:Rect>((-19294,12983), (-5982,19775))</a:Rect>
 <a:LineColor>16711680</a:LineColor>
 <a:FillColor>16777215</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -3899,7 +3899,7 @@ Shadow=0</a:DisplayPreferences>
 <o:ReferenceSymbol Id="o55">
 <a:CreationDate>1762545139</a:CreationDate>
 <a:ModificationDate>1762623671</a:ModificationDate>
-<a:CenterTextOffset>(0, 3)</a:CenterTextOffset>
+<a:CenterTextOffset>(0, 4)</a:CenterTextOffset>
 <a:SourceTextOffset>(-17, -43)</a:SourceTextOffset>
 <a:DestinationTextOffset>(1393, -1611)</a:DestinationTextOffset>
 <a:Rect>((-4839,-11478), (23915,-1336))</a:Rect>
@@ -3922,7 +3922,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o58">
 <a:CreationDate>1762545158</a:CreationDate>
 <a:ModificationDate>1762623671</a:ModificationDate>
-<a:CenterTextOffset>(1, 1)</a:CenterTextOffset>
+<a:CenterTextOffset>(2, 2)</a:CenterTextOffset>
 <a:SourceTextOffset>(-25, 1353)</a:SourceTextOffset>
 <a:DestinationTextOffset>(-353, -816)</a:DestinationTextOffset>
 <a:Rect>((-26371,-5836), (-4839,-1336))</a:Rect>
@@ -3989,7 +3989,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o64">
 <a:CreationDate>1762545932</a:CreationDate>
 <a:ModificationDate>1762626010</a:ModificationDate>
-<a:CenterTextOffset>(0, 1)</a:CenterTextOffset>
+<a:CenterTextOffset>(0, 2)</a:CenterTextOffset>
 <a:DestinationTextOffset>(3147, 2501)</a:DestinationTextOffset>
 <a:Rect>((5518,-17196), (23915,-11478))</a:Rect>
 <a:ListOfPoints>((5518,-17196),(23915,-11478))</a:ListOfPoints>
@@ -4011,7 +4011,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o66">
 <a:CreationDate>1762549969</a:CreationDate>
 <a:ModificationDate>1762626003</a:ModificationDate>
-<a:CenterTextOffset>(1, 0)</a:CenterTextOffset>
+<a:CenterTextOffset>(2, 0)</a:CenterTextOffset>
 <a:SourceTextOffset>(7, 1122)</a:SourceTextOffset>
 <a:DestinationTextOffset>(1265, -1278)</a:DestinationTextOffset>
 <a:Rect>((-25676,14774), (-3421,17373))</a:Rect>
@@ -4034,7 +4034,7 @@ CARD 0 Arial,8,N</a:FontList>
 <o:ReferenceSymbol Id="o68">
 <a:CreationDate>1762582593</a:CreationDate>
 <a:ModificationDate>1762626003</a:ModificationDate>
-<a:CenterTextOffset>(1, 0)</a:CenterTextOffset>
+<a:CenterTextOffset>(2, 0)</a:CenterTextOffset>
 <a:SourceTextOffset>(-74, 133)</a:SourceTextOffset>
 <a:DestinationTextOffset>(1174, 1842)</a:DestinationTextOffset>
 <a:Rect>((-25584,4062), (-3421,14774))</a:Rect>
@@ -8565,7 +8565,7 @@ left join result1 r on c.CustomerID = r.CustomerID</a:TaggedSQLQuery>
 <a:Code>ViewProductStockQuantity</a:Code>
 <a:CreationDate>1762625665</a:CreationDate>
 <a:Creator>pipch</a:Creator>
-<a:ModificationDate>1762625983</a:ModificationDate>
+<a:ModificationDate>1762680003</a:ModificationDate>
 <a:Modifier>pipch</a:Modifier>
 <a:View.SQLQuery>SELECT
     P.ProductID,
@@ -8573,7 +8573,7 @@ left join result1 r on c.CustomerID = r.CustomerID</a:TaggedSQLQuery>
     P.Price,
     T.TransDate,
     T.TransQuantity,
-    T.StockQuantity,
+    isnull(T.StockQuantity,0) as StockQuantity,
     T.TransactionID
 FROM Products P
 OUTER APPLY (
@@ -8588,7 +8588,7 @@ OUTER APPLY (
     P.Price,
     T.TransDate,
     T.TransQuantity,
-    T.StockQuantity,
+    isnull(T.StockQuantity,0) as StockQuantity,
     T.TransactionID
 FROM Products P
 OUTER APPLY (
