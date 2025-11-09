@@ -1,6 +1,6 @@
 --Customers
 DECLARE @i INT = 0
-WHILE @i < 10000
+WHILE @i < 10
 BEGIN
     INSERT INTO Customers (
         FirstName,
@@ -23,7 +23,7 @@ GO
 
 DECLARE @i INT = 0
 DECLARE @CustomerID BIGINT
-WHILE @i < 10000
+WHILE @i < 10
 BEGIN
 	-- Random CustomerID
     SELECT TOP 1 @CustomerID = CustomerID
@@ -64,7 +64,7 @@ GO
 
 --Products
 DECLARE @i INT = 0
-WHILE @i < 5000  -- Change this number to insert more rows
+WHILE @i < 10  -- Change this number to insert more rows
 BEGIN
     INSERT INTO Products (
         ProductName,
@@ -90,7 +90,7 @@ GO
 DECLARE @i INT = 0
 DECLARE @CustomerID BIGINT
 DECLARE @OrderDate DATE
-WHILE @i < 3000  -- Number of orders to generate
+WHILE @i < 10  -- Number of orders to generate
 BEGIN
     -- Random CustomerID
     SELECT TOP 1 @CustomerID = CustomerID
@@ -149,6 +149,8 @@ go
 
 --select * from Orders
 
+--delete CustomerAccountBalanceTransactions
+
 INSERT INTO CustomerAccountBalanceTransactions (
     CustomerID,
 	TransactionType,
@@ -173,6 +175,15 @@ FROM (
 ) C;
 GO
 
+/*
+delete ProductStockQuantityUpdateLog
+delete ProductTransactions
+
+select * from ProductTransactions
+
+select * from Products where ProductID = 6
+*/
+
 --delete ProductTransactions
 INSERT INTO ProductTransactions (
     ProductID,
@@ -183,11 +194,11 @@ INSERT INTO ProductTransactions (
     Reference,
     Notes
 )
-SELECT
+SELECT 
     OD.ProductID,
     O.OrderDate,
-    2, -- Assuming TransType = 2 means "Stock Out"
-    OD.Quantity * 10,
+    2, -- Purchase
+    ABS(OD.Quantity * 10),
     OD.UnitPrice,
     CAST('<OrderID>' + CAST(OD.OrderID AS NVARCHAR) + '</OrderID>' +
          '<OrderDetailID>' + CAST(OD.OrderDetailID AS NVARCHAR) + '</OrderDetailID>' +
@@ -210,8 +221,8 @@ INSERT INTO ProductTransactions (
 SELECT
     OD.ProductID,
     O.OrderDate,
-    2, -- Assuming TransType = 2 means "Stock Out"
-    -1 * OD.Quantity,
+    1, -- Sale
+    ABS(OD.Quantity),
     OD.UnitPrice,
     CAST('<OrderID>' + CAST(OD.OrderID AS NVARCHAR) + '</OrderID>' +
          '<OrderDetailID>' + CAST(OD.OrderDetailID AS NVARCHAR) + '</OrderDetailID>' +

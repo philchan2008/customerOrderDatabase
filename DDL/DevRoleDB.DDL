@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     11/9/2025 4:45:28 PM                         */
+/* Created on:     11/9/2025 5:45:44 PM                         */
 /*==============================================================*/
 
 
@@ -152,6 +152,17 @@ go
 /*==============================================================*/
 create index IX_CUSTOMERSDOB on Customers (
 DateOfBirth ASC
+)
+go
+
+/*==============================================================*/
+/* Table: ErrorLog                                              */
+/*==============================================================*/
+create table ErrorLog (
+   ErrorID              bigint               identity,
+   CapturedDate         datetime             null default getdate(),
+   ErrorMessage         nvarchar(max)        null,
+   constraint PK_ERRORLOG primary key (ErrorID)
 )
 go
 
@@ -559,53 +570,62 @@ go
 CREATE PROCEDURE sbp_ProcessAccountBalance
 AS
 BEGIN
-    DECLARE @messageBody XML;
-    DECLARE @CustomerID INT;
-    DECLARE @TransactionAmount INT;
-    DECLARE @TransactionID INT;
-    DECLARE @TransactionType INT;
-    DECLARE @CreditDebitFlag INT;
+    BEGIN TRY
+        DECLARE @conversation_handle UNIQUEIDENTIFIER;
+        DECLARE @messageBody XML;
+        DECLARE @CustomerID INT;
+        DECLARE @TransactionAmount INT;
+        DECLARE @TransactionID INT;
+        DECLARE @TransactionType INT;
+        DECLARE @CreditDebitFlag INT;
 
-    WHILE (1 = 1)
-    BEGIN
-        WAITFOR (
-            RECEIVE TOP(1)
-                @messageBody = message_body
-            FROM AccountBalanceUpdateTargetQueue
-        ), TIMEOUT 1000;
-
-        IF @messageBody IS NULL BREAK;
-
-        -- Parse and apply updates
-        DECLARE @cursor CURSOR;
-        SET @cursor = CURSOR FOR
-        SELECT
-            T.value('(CustomerID)[1]', 'INT'),
-            T.value('(TransactionID)[1]', 'INT'),
-            T.value('(TransactionAmount)[1]', 'MONEY'),
-            T.value('(TransactionType)[1]', 'INT'),
-            T.value('(CreditDebitFlag)[1]', 'INT')
-        FROM @messageBody.nodes('/Transactions/Transaction') AS X(T);
-
-        OPEN @cursor;
-        FETCH NEXT FROM @cursor INTO @CustomerID, @TransactionID, @TransactionAmount, @TransactionType, @CreditDebitFlag;
-
-        WHILE @@FETCH_STATUS = 0
+        WHILE (1 = 1)
         BEGIN
-            UPDATE Customers
-            SET AccountBalance = ISNULL(AccountBalance, 0) + @TransactionAmount * @CreditDebitFlag
-            WHERE CustomerID = @CustomerID;
-            
-            INSERT INTO CustomerAccountBalanceUpdateLog 
-                  (LogDatetime, CustomerID, TransactionID, TransactionAmount, TransactionType, CreditDebitFlag)
-            SELECT getdate(), @CustomerID, @TransactionID, @TransactionAmount, @TransactionType, @CreditDebitFlag
+            WAITFOR (
+                RECEIVE TOP(1)
+                    @conversation_handle = conversation_handle,
+                    @messageBody = message_body
+                FROM AccountBalanceUpdateTargetQueue
+            ), TIMEOUT 1000;
 
+            IF @messageBody IS NULL BREAK;
+
+            -- Parse and apply updates
+            DECLARE @cursor CURSOR;
+            SET @cursor = CURSOR FOR
+            SELECT
+                T.value('(CustomerID)[1]', 'INT'),
+                T.value('(TransactionID)[1]', 'INT'),
+                T.value('(TransactionAmount)[1]', 'MONEY'),
+                T.value('(TransactionType)[1]', 'INT'),
+                T.value('(CreditDebitFlag)[1]', 'INT')
+            FROM @messageBody.nodes('/Transactions/Transaction') AS X(T);
+
+            OPEN @cursor;
             FETCH NEXT FROM @cursor INTO @CustomerID, @TransactionID, @TransactionAmount, @TransactionType, @CreditDebitFlag;
-        END
 
-        CLOSE @cursor;
-        DEALLOCATE @cursor;
-    END
+            WHILE @@FETCH_STATUS = 0
+            BEGIN
+                UPDATE Customers
+                SET AccountBalance = ISNULL(AccountBalance, 0) + @TransactionAmount * @CreditDebitFlag
+                WHERE CustomerID = @CustomerID;
+            
+                INSERT INTO CustomerAccountBalanceUpdateLog 
+                      (LogDatetime, CustomerID, TransactionID, TransactionAmount, TransactionType, CreditDebitFlag)
+                SELECT getdate(), @CustomerID, @TransactionID, @TransactionAmount, @TransactionType, @CreditDebitFlag
+
+                FETCH NEXT FROM @cursor INTO @CustomerID, @TransactionID, @TransactionAmount, @TransactionType, @CreditDebitFlag;
+            END
+
+            CLOSE @cursor;
+            DEALLOCATE @cursor;
+            END CONVERSATION @conversation_handle;
+        END
+    END TRY
+    BEGIN CATCH
+        INSERT INTO ErrorLog(ErrorMessage)
+        VALUES (ERROR_MESSAGE())
+    END CATCH
 END;
 GO
 
@@ -628,53 +648,62 @@ GO
 CREATE PROCEDURE sbp_ProcessProductStockQuantity
 AS
 BEGIN
-    DECLARE @messageBody XML;
-    DECLARE @ProductID INT;
-    DECLARE @TransactionQuantity INT;
-    DECLARE @TransactionID INT;
-    DECLARE @TransactionType INT;
-    DECLARE @CreditDebitFlag INT;
+    BEGIN TRY
+        DECLARE @conversation_handle UNIQUEIDENTIFIER;
+        DECLARE @messageBody XML;
+        DECLARE @ProductID INT;
+        DECLARE @TransactionQuantity INT;
+        DECLARE @TransactionID INT;
+        DECLARE @TransactionType INT;
+        DECLARE @CreditDebitFlag INT;
 
-    WHILE (1 = 1)
-    BEGIN
-        WAITFOR (
-            RECEIVE TOP(1)
-                @messageBody = message_body
-            FROM StockQtyUpdateTargetQueue
-        ), TIMEOUT 1000;
-
-        IF @messageBody IS NULL BREAK;
-
-        -- Parse and apply updates
-        DECLARE @cursor CURSOR;
-        SET @cursor = CURSOR FOR
-        SELECT
-            T.value('(ProductID)[1]', 'INT'),
-            T.value('(TransactionID)[1]', 'INT'),
-            T.value('(TransactionQuantity)[1]', 'INT'),
-            T.value('(TransactionType)[1]', 'INT'),
-            T.value('(CreditDebitFlag)[1]', 'INT')
-        FROM @messageBody.nodes('/Transactions/Transaction') AS X(T);
-
-        OPEN @cursor;
-        FETCH NEXT FROM @cursor INTO @ProductID, @TransactionID, @TransactionQuantity, @TransactionType, @CreditDebitFlag;
-
-        WHILE @@FETCH_STATUS = 0
+        WHILE (1 = 1)
         BEGIN
-            UPDATE Products
-            SET StockQuantity = ISNULL(StockQuantity, 0) + @TransactionQuantity * @CreditDebitFlag
-            WHERE ProductID = @ProductID;
-            
-            INSERT INTO ProductStockQuantityUpdateLog 
-                  (LogDatetime, ProductID, TransactionID, TransactionQuantity, TransactionType, CreditDebitFlag)
-            SELECT getdate(), @ProductID, @TransactionID, @TransactionQuantity, @TransactionType, @CreditDebitFlag
+            WAITFOR (
+                RECEIVE TOP(1)
+                    @conversation_handle = conversation_handle,
+                    @messageBody = message_body
+                FROM StockQtyUpdateTargetQueue
+            ), TIMEOUT 1000;
 
+            IF @messageBody IS NULL BREAK;
+
+            -- Parse and apply updates
+            DECLARE @cursor CURSOR;
+            SET @cursor = CURSOR FOR
+            SELECT
+                T.value('(ProductID)[1]', 'INT'),
+                T.value('(TransactionID)[1]', 'INT'),
+                T.value('(TransactionQuantity)[1]', 'INT'),
+                T.value('(TransactionType)[1]', 'INT'),
+                T.value('(CreditDebitFlag)[1]', 'INT')
+            FROM @messageBody.nodes('/Transactions/Transaction') AS X(T);
+
+            OPEN @cursor;
             FETCH NEXT FROM @cursor INTO @ProductID, @TransactionID, @TransactionQuantity, @TransactionType, @CreditDebitFlag;
-        END
 
-        CLOSE @cursor;
-        DEALLOCATE @cursor;
-    END
+            WHILE @@FETCH_STATUS = 0
+            BEGIN
+                UPDATE Products
+                SET StockQuantity = ISNULL(StockQuantity, 0) + @TransactionQuantity * @CreditDebitFlag
+                WHERE ProductID = @ProductID;
+            
+                INSERT INTO ProductStockQuantityUpdateLog 
+                      (LogDatetime, ProductID, TransactionID, TransactionQuantity, TransactionType, CreditDebitFlag)
+                SELECT getdate(), @ProductID, @TransactionID, @TransactionQuantity, @TransactionType, @CreditDebitFlag
+
+                FETCH NEXT FROM @cursor INTO @ProductID, @TransactionID, @TransactionQuantity, @TransactionType, @CreditDebitFlag;
+            END
+
+            CLOSE @cursor;
+            DEALLOCATE @cursor;
+            END CONVERSATION @conversation_handle;
+        END 
+    END TRY
+    BEGIN CATCH
+        INSERT INTO ErrorLog(ErrorMessage)
+        VALUES (ERROR_MESSAGE())
+    END CATCH
 END;
 GO
 

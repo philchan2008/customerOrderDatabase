@@ -12,7 +12,7 @@ SELECT
     DATEADD(DAY, -ABS(CHECKSUM(NEWID()) % 365), GETDATE()), -- random date within past year
     ABS(CAST((RAND(CHECKSUM(NEWID())) * 200 - 100) AS DECIMAL(18,2))), -- random amount between -100 and +100
     '<ref><refNo>' + CAST(CAST((RAND(CHECKSUM(NEWID())) * 10000) AS INT) as VARCHAR(10)) + '</refNo></ref>', -- or use '<ref>Sample</ref>' if you want XML
-    CONCAT('Sample transaction for ', C.FullName)
+    CONCAT('Sample transaction for ', C.FullName) 
 FROM (
     SELECT TOP 1 CustomerID, FullName
     FROM Customers c
@@ -22,6 +22,21 @@ FROM (
 ) C;
 GO
 
+SELECT COUNT(*) FROM AccountBalanceUpdateTargetQueue;
+
+select count(*) from [dbo].[CustomerAccountBalanceUpdateLog]
+
+SELECT 
+    is_activation_enabled,
+    activation_procedure,
+    execute_as_principal_id
+FROM sys.service_queues
+WHERE name = 'AccountBalanceUpdateTargetQueue';
+
+SELECT * FROM sys.transmission_queue
+WHERE to_service_name = 'AccountBalanceUpdateTarget';
+
+select * from ErrorLog
 
 select * from  CustomerAccountBalanceTransactions i
 
@@ -195,3 +210,21 @@ DECLARE @messageBody XML;
 go
 
 select * from ProductStockQuantityUpdateLog
+
+
+
+SELECT COUNT(*) FROM StockQtyUpdateTargetQueue;
+
+select count(*) from [dbo].[ProductStockQuantityUpdateLog]
+
+SELECT 
+    is_activation_enabled,
+    activation_procedure,
+    execute_as_principal_id
+FROM sys.service_queues
+WHERE name = 'StockQtyUpdateTargetQueue';
+
+SELECT * FROM sys.transmission_queue
+WHERE to_service_name = 'StockQtyUpdateTarget';
+
+select * from ErrorLog;
